@@ -7,17 +7,17 @@ import sys
 import tomli
 from pathlib import Path
 from typing import Dict, Any, Optional
-
 import llm
 
 async def query_model_async(
     model_name: str,
-    api_key: str, 
+    api_key: str,
     system_prompt: str,
     user_prompt: str,
     additional_system: str = ""
 ) -> Optional[Dict[str, Any]]:
     try:
+        print(f"Querying {model_name}...")
         model = llm.get_async_model(model_name)
         model.key = api_key
 
@@ -40,11 +40,12 @@ async def query_model_async(
 def query_model_sync(
     model_name: str,
     api_key: str,
-    system_prompt: str, 
+    system_prompt: str,
     user_prompt: str,
     additional_system: str = ""
 ) -> Optional[Dict[str, Any]]:
     try:
+        print(f"Querying {model_name}...")
         model = llm.get_model(model_name)
         model.key = api_key
 
